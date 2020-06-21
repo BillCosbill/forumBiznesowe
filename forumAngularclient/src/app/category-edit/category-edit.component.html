@@ -1,0 +1,35 @@
+<form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()" class="box" name="form" novalidate>
+  <h1>Edytuj kategorię</h1>
+  <div>
+    <label for="categoryName"></label>
+    <input
+      #categoryName="ngModel"
+      [(ngModel)]="editedCategory.name"
+      id="categoryName"
+      name="categoryName"
+      required
+      type="text"
+    />
+  </div>
+
+  <div>
+    <label for="categoryDescription"></label>
+    <textarea
+      #password="ngModel"
+      [(ngModel)]="editedCategory.description"
+      id="categoryDescription"
+      name="categoryDescription"
+      type="text"
+    ></textarea>
+  </div>
+
+  <div>
+    <input class="admin-panel-button" type="submit" value="Stwórz">
+    <button class="admin-panel-button" routerLink="/categories">Anuluj</button>
+  </div>
+
+  <div *ngIf="f.submitted && categoryName.invalid" class="alerts" role="alert">
+    Category name is required!
+  </div>
+
+</form>

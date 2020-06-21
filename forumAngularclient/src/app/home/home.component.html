@@ -1,0 +1,22 @@
+<h1>Kategorie</h1>
+<button *ngIf="authService.isModeratorLoggedIn()" class="create-button" routerLink="new">Dodaj kategorię</button>
+<div class="table-body">
+  <table class="table-table">
+    <tbody>
+    <tr *ngFor="let category of categories">
+      <td [routerLink]="[category.id]">
+        {{category.name}}<br>
+        {{category.description}}
+      </td>
+      <td>
+        <button *ngIf="authService.isModeratorLoggedIn()" [routerLink]="['/categories/edit', category.id]"
+                class="admin-panel-button">Edytuj
+        </button>
+        <button (click)="deleteCategory(category.id)" *ngIf="authService.isModeratorLoggedIn()"
+                class="admin-panel-button">Usuń
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

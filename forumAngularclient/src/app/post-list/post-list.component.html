@@ -1,0 +1,27 @@
+<div class="nav">
+  <h1>{{category.name}}</h1>
+  <button *ngIf="authService.isUserLoggedIn()" [routerLink]="['/addpost', category.id]" class="admin-panel-button">Dodaj
+    post
+  </button>
+</div>
+
+<div class="table-body">
+  <table class="table-table">
+    <thead>
+    <tr>
+      <th scope="col">Autor</th>
+      <th scope="col">Tytuł</th>
+      <th scope="col">Treść</th>
+      <th scope="col">Data dodania</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let post of posts" [routerLink]="['/post', post.id]">
+      <td>{{ post.author.username }}</td>
+      <td>{{ post.title }}</td>
+      <td>{{ post.text }}</td>
+      <td>{{ post.postedDate }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
